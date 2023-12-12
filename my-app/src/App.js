@@ -6,7 +6,7 @@ import ItemList from './components/ItemList.jsx'
 
 function App() {
   
-  const tasks = [
+  /* const tasks = [
     { "task": "Read the project brief", "completed": true},
     { "task": "Create a project repository", "completed": false},
     { "task": "Create React application using Vite", "completed": false},
@@ -14,7 +14,7 @@ function App() {
     { "task": "Finish Day 1 Research Tasks", "completed": false},
     { "task": "Finish Day 2 Development Tasks", "completed": false},
     { "task": "Finish Day 2 Research Tasks", "completed": false}
-  ];
+  ]; */
 
   return (
     <div className="App">

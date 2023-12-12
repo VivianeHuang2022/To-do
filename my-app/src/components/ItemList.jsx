@@ -1,28 +1,32 @@
-function ItemList({ tasks }) {
-    // Splitting tasks into completed and not completed
-    const completedTasks = tasks.filter(task => task.completed);
-    const notCompletedTasks = tasks.filter(task => !task.completed);
+import itemsList from "../data/items.json";
+import classes from "../styles/itemsList.module.css";
+import { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
-    return (
-        <div className="task-container" style={{ display: 'flex', justifyContent: 'space-around' } }>
-            <div>
-                <h2>Completed Tasks</h2>
-                <ul>
-                    {completedTasks.map((task, index) => (
-                        <li key={index}>{task.task}</li>
-                    ))}
-                </ul>
-            </div>
-            <div>
-                <h2>Not Completed Tasks</h2>
-                <ul>
-                    {notCompletedTasks.map((task, index) => (
-                        <li key={index}>{task.task}</li>
-                    ))}
-                </ul>
-            </div>
+function ItemList(){
+
+    const [items, setItems] = useState(itemsList);
+
+    const clickToDelete = itemId => {
+        const  filteredList = items.filter(eachItem =>{
+            return eachItem.id !== itemId;
+        }); setItems(filteredList);
+    }
+
+    
+      return (
+        <div className={classes.listContainer}>
+            <ul>
+            {items.map((item) => (
+                    <div className={classes.cards} key={uuidv4()}> 
+                    <p>{item.task}</p>
+                    <p>checkbox</p>
+                    <button onClick={()=> clickToDelete(item.id)} className={classes.deleteButton}>delete</button>
+        </div>     
+            ))}
+            </ul>
         </div>
-    );
+    )
 }
 
-export default ItemList;
+export default ItemList ;
